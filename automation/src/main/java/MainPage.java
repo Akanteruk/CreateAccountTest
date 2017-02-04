@@ -1,4 +1,3 @@
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -42,34 +41,38 @@ public class MainPage {
         wait = new WebDriverWait(webDriver, 30);
 
         PageFactory.initElements(webDriver, this);
-
     }
+
     public void swichToRegister() {
         registerBtn.click();
     }
 
     public void enterFn(String firstname) {
         enterFirstname.sendKeys(firstname);
-
     }
+
     public void enterLn (String lastname) {
         enterLastname.sendKeys(lastname);
     }
+
     public void enterRegEmail (String registerEmail){
         enterregisterEmail.sendKeys(registerEmail);
     }
+
     public void enterPwd1 (String pwd1){
         enterpwd1.sendKeys(pwd1);
     }
+
     public void enterPhone (String phone){
         enterphone.sendKeys(phone);
     }
+
     public void enterCouponeCode (String coupone_code){
         entercouponecode.sendKeys(coupone_code);
     }
+
     public void swichSearchToAccount() {
         accountBtn.click();
     }
-
 }
 

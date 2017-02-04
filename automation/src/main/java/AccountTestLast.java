@@ -1,8 +1,6 @@
-import lib.ExcelDataConfig1;
-import lib.ExcelDataConfig2;
+import lib.ExcelDataConfig;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,15 +11,14 @@ import org.testng.annotations.DataProvider;
 /**
  * Created by Tonia on 31.01.2017.
  */
-public class AccounTeatLast {
+public class AccountTestLast {
     MainPage mainPage;
     WebDriver webDriver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(webDriver, 30, 500);
 
-
     @org.testng.annotations.Test (dataProvider = "accountInvalidData")
     public void accountInvalidData(String firstname, String lastname, String registerEmail,
-                              String pwd1, String phone) throws InterruptedException
+                                   String pwd1, String phone) throws InterruptedException
     {
         mainPage = new MainPage(webDriver);
         webDriver.get("http://app.yaware.com/");
@@ -87,46 +84,37 @@ public class AccounTeatLast {
         Assert.assertTrue(webDriver.getCurrentUrl().contains("http://app.yaware.com/welcome"));
         System.out.println("Account is created");
     }
+
     @After
     public void cleanUP ()
     {
         webDriver.quit();
     }
+
     @DataProvider(name = "accountInvalidData")
     public Object[][] passInvalidData()
     {
-        ExcelDataConfig1 config = new ExcelDataConfig1("c:\\Tools\\ExcelData\\TestData.xls");
-        int rows = config.getRowCount(0);
-        Object[][] data = new Object[rows][5];
-
-        String sheetName = "AccountInvalidData";
-        for(int i=0; i < rows; i++)
-        {
-            System.out.println(i);
-            data[i][0]=config.getData(sheetName, i,0);
-            data[i][1]=config.getData(sheetName, i,1);
-            data[i][2]=config.getData(sheetName, i,2);
-            data[i][3]=config.getData(sheetName, i,3);
-            data[i][4]=config.getData(sheetName, i,4);
-        }
-        return data;
+        return getData("AccountInvalidData");
     }
+
     @DataProvider(name = "accountValidData")
     public Object[][] passValidData()
     {
-        ExcelDataConfig2 config = new ExcelDataConfig2("c:\\Tools\\ExcelData\\TestData2.xls");
-        int rows = config.getRowCount(0);
-        Object[][] data = new Object[rows][5];
+        return getData("AccountValidData");
+    }
 
-        String sheetName = "AccountValidData";
+    private Object[][] getData(String sheetName)
+    {
+        ExcelDataConfig config = new ExcelDataConfig("..\\ExcelData\\TestData.xls");
+        int rows = config.getRowCount(sheetName);
+        Object[][] data = new Object[rows][5];
         for(int i=0; i < rows; i++)
         {
-            System.out.println(i);
-            data[i][0]=config.getData(sheetName, i,0);
-            data[i][1]=config.getData(sheetName, i,1);
-            data[i][2]=config.getData(sheetName, i,2);
-            data[i][3]=config.getData(sheetName, i,3);
-            data[i][4]=config.getData(sheetName, i,4);
+            data[i][0] = config.getData(sheetName, i,0);
+            data[i][1] = config.getData(sheetName, i,1);
+            data[i][2] = config.getData(sheetName, i,2);
+            data[i][3] = config.getData(sheetName, i,3);
+            data[i][4] = config.getData(sheetName, i,4);
         }
         return data;
     }
