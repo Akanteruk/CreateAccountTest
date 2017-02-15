@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
 /**
  * Created by Tonia on 31.01.2017.
  */
-public class AccountTestLast {
+public class AccountTest {
     MainPage mainPage;
     WebDriver webDriver = new ChromeDriver();
     WebDriverWait wait = new WebDriverWait(webDriver, 30, 500);
