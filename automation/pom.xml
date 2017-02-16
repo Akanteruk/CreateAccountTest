@@ -17,13 +17,7 @@
     </repositories>
 
     <dependencies>
-        <dependency>
-            <groupId>org.apache.maven.plugin-testing</groupId>
-            <artifactId>maven-plugin-testing-harness</artifactId>
-            <version>3.3.0</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
+               <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.0.1</version>
@@ -49,5 +43,16 @@
             <version>1.9.3</version>
         </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>last</source>
+                    <target>last</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
