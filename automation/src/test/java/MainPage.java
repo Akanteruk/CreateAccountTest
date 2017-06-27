@@ -11,28 +11,22 @@ public class MainPage {
     private WebDriver webDriver;
     private WebDriverWait wait;
 
-    @FindBy(css = "a[href='#register']")
+    @FindBy(css = "a[href='#sign-up']")
     WebElement registerBtn;
 
-    @FindBy (id = "firstname")
-    WebElement enterFirstname;
+    @FindBy (id = "signUpEmail")
+    WebElement enterEmailAddress;
 
-    @FindBy (id = "lastname")
-    WebElement enterLastname;
+    @FindBy (id = "signUpPassword")
+    WebElement enterPassword;
 
-    @FindBy (id = "registerEmail")
-    WebElement enterregisterEmail;
+    @FindBy (id = "signUpName")
+    WebElement enterName;
 
-    @FindBy (id = "pwd1")
-    WebElement enterpwd1;
+    @FindBy (id = "signUpPhone")
+    WebElement enterPhone;
 
-    @FindBy (id = "phone")
-    WebElement enterphone;
-
-    @FindBy (id = "coupone_code")
-    WebElement entercouponecode;
-
-    @FindBy (id = "register-account-submit")
+    @FindBy (css = "btn btn-default")
     WebElement accountBtn;
 
 
@@ -47,28 +41,20 @@ public class MainPage {
         registerBtn.click();
     }
 
-    public void enterFn(String firstname) {
-        enterFirstname.sendKeys(firstname);
+    public void enterEmail(String emailaddress) {
+        enterEmailAddress.sendKeys(emailaddress);
     }
 
-    public void enterLn (String lastname) {
-        enterLastname.sendKeys(lastname);
+    public void enterName (String name) {
+        enterName.sendKeys(name);
     }
 
-    public void enterRegEmail (String registerEmail){
-        enterregisterEmail.sendKeys(registerEmail);
-    }
-
-    public void enterPwd1 (String pwd1){
-        enterpwd1.sendKeys(pwd1);
+    public void enterPassword (String password){
+        enterPassword.sendKeys(password);
     }
 
     public void enterPhone (String phone){
-        enterphone.sendKeys(phone);
-    }
-
-    public void enterCouponeCode (String coupone_code){
-        entercouponecode.sendKeys(coupone_code);
+        enterPhone.sendKeys(phone);
     }
 
     public void swichSearchToAccount() {
